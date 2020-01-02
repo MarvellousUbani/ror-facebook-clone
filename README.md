@@ -12,4 +12,4 @@ Building a large portion of the core Facebook user functionality in this particu
 
 
 ##### ERD Facebook-Clone Diagram:
-![facebook3](https://user-images.githubusercontent.com/25789605/71682594-375c4580-2da1-11ea-9c72-6384d5c8619a.png)
+![facebook4](https://user-images.githubusercontent.com/25789605/71686969-beafb600-2dad-11ea-8883-70f804349eb2.png)
