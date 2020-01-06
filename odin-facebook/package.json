@@ -1,5 +1,5 @@
 {
-  "name": "facebook_app",
+  "name": "odin_facebook",
   "private": true,
   "dependencies": {
     "@rails/ujs": "^6.0.0",
