@@ -32,15 +32,15 @@ class PostsController < ApplicationController
 
 	private
 
-    def posts_params
-    	params.require(:post).permit(:content)
-    end
+        def posts_params
+        	params.require(:post).permit(:content)
+        end
 
 
-    def post_owner
-      @post = Post.find(params[:id])
-      unless current_user == @post.author
-        redirect_to posts_path
-      end
-    end
+        def post_owner
+          @post = Post.find(params[:id])
+          unless current_user == @post.author
+            redirect_to posts_path
+          end
+        end
 end
