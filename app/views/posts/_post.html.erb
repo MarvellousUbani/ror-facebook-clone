@@ -13,22 +13,35 @@
 <p class="post-time-ago my-2"><%= time_ago_in_words(post.created_at) %> ago.</p>
 <p class="post-content"><%= post.content %></p>
 <div class="d-flex justify-content-between post-like-line">
-	<ul class="d-flex">
+	<ul class="d-flex pl-0">
 		<li>
 			<% unless current_user.likes.exists?(post_id: post.id) %>
-			  <%= button_to "👎",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font"} %>
+			  <%= button_to "👍",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font"} %>
 			<% else %>
-			  <%= button_to "👍",{:action => 'destroy',
+			  <%= button_to "👎",{:action => 'destroy',
 			  	:controller => 'likes',:id => post.likes.find_by(user_id:current_user.id).id }, 
 			  	{:method => :delete, :class => "trans-btn font-red mid-font"} %>
 			  <% end %>
 	</li>
-			<li><%= post.likes.count %> Likes </li>
+			<li class="d-flex align-items-center"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></li>
 	</ul>
 
 	<ul class="d-flex">
-		<li class="comments-count">0 Comments</li>
-		<li><button class="trans-btn">Reply</button></li>
+		<li class="comments-count d-flex align-items-center"><%= post.comments.count %> Comments</li>
 	</ul>
 </div>
+
+<div>
+	<p><%= render post.comments %></p>
+
+	<%= form_for([Comment.new], html: {class: "w-100"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :content, class:'d-none'%>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_area :content, class: 'form-control', :rows => 1, :placeholder => "Reply"  %>
+    <p class="d-flex justify-content-end my-2"><%= f.submit "Comment", class: "btn bg-red font-white" %></p>
+    </div>
+  <% end %>
+</div>
+
 </div>

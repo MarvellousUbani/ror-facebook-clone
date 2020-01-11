@@ -1,3 +1,7 @@
+*{
+	outline: 0px !important;
+}
+
 body{
 	 background: rgba(238, 69, 101,0.05) !important;
 }
@@ -150,7 +154,12 @@ textarea:focus, input:focus{
 
 .mid-font{
 	font-size:1.6rem;
-	transform: rotate(180deg)
+}
+
+.mid-font:hover{
+	  transform: scale(1.4);
+    transition: all .5s;
+    color: red;
 }
 
 .max100{
