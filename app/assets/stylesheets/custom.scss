@@ -10,6 +10,7 @@ textarea:focus, input:focus{
     box-shadow:none !important;
 }
 
+
 /*main content*/
 
 .main-content{
@@ -145,6 +146,11 @@ textarea:focus, input:focus{
 
 .font-black:hover{
 	color:#232323;
+}
+
+.mid-font{
+	font-size:1.6rem;
+	transform: rotate(180deg)
 }
 
 .max100{

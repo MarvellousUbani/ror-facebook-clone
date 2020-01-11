@@ -13,10 +13,19 @@
 <p class="post-time-ago my-2"><%= time_ago_in_words(post.created_at) %> ago.</p>
 <p class="post-content"><%= post.content %></p>
 <div class="d-flex justify-content-between post-like-line">
-	<% if current_user.likes.exists?(post_id:@post.id)
-	<%= button_to "<%= post.likes.count %> Like",{:controller => 'likes', :action => 'create', :user_id => current_user.id, :post_id => @post.id}, {:method => :post} %>
-	<% end %>
-	<button class="trans-btn"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>0 Like</button>
+	<ul class="d-flex">
+		<li>
+			<% unless current_user.likes.exists?(post_id: post.id) %>
+			  <%= button_to "👎",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font"} %>
+			<% else %>
+			  <%= button_to "👍",{:action => 'destroy',
+			  	:controller => 'likes',:id => post.likes.find_by(user_id:current_user.id).id }, 
+			  	{:method => :delete, :class => "trans-btn font-red mid-font"} %>
+			  <% end %>
+	</li>
+			<li><%= post.likes.count %> Likes </li>
+	</ul>
+
 	<ul class="d-flex">
 		<li class="comments-count">0 Comments</li>
 		<li><button class="trans-btn">Reply</button></li>
