@@ -1,10 +1,13 @@
-<div class="d-flex py-2">
+<div class="d-flex py-2 comment-box justify-content-between">
+<div class="d-flex">
 <span class="post-author-img pr-2">
 		 	<%= image_tag user_avatar(comment.user) , class: "img-fluid small-profile-img", alt: "small profile image" %>
 	    </span> 
 <span class="post-author-name pr-3"><%= link_to comment.user.name, user_path(comment.user), :class => "font-black" %></span>
-
-
+   
 <span class="content"> <%= comment.content %></span>
+</div>
 
+<% if current_user == comment.user %>
+<div class="comment-delete-btn"><%= link_to "x", comment, {:class => "font-red", method: :delete} %> </div> <% end %>
 </div>

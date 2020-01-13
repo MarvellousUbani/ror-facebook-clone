@@ -32,6 +32,7 @@
 </div>
 
 <div>
+	<h4 class="font-red">Comments</h4>
 	<p><%= render post.comments %></p>
 
 	<%= form_for([Comment.new], html: {class: "w-100"}) do |f| %>

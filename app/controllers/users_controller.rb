@@ -6,4 +6,8 @@ class UsersController < ApplicationController
     @post = Post.new
     @posts = Post.where("author_id" => @user.id)
   end
+
+  def index
+  	@users = User.all
+  end
 end

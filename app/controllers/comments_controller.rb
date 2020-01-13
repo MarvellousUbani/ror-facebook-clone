@@ -3,11 +3,14 @@ class CommentsController < ApplicationController
 
    @comment = current_user.comments.build(comments_params)
    if @comment.save
-   	redirect_to posts_path
+   	redirect_back(fallback_location: root_path)
    end
 	end
 
 	def destroy
+		  @comment = Comment.find(params[:id])
+    	@comment.destroy
+    	redirect_back(fallback_location: root_path)
   end
 
   private
