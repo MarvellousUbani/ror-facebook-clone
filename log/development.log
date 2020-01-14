@@ -9985,3 +9985,78 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 606ms (Views: 488.9ms | ActiveRecord: 39.2ms | Allocations: 16700)
 
 
+Started GET "/" for ::1 at 2020-01-14 16:24:42 +0100
+  [1m[35m (18.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 259ms (ActiveRecord: 0.0ms | Allocations: 3826)
+
+
+Started GET "/login" for ::1 at 2020-01-14 16:24:44 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 21.5ms | Allocations: 646)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 95.9ms | Allocations: 3097)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.19.1
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Command "webpack" not found.
+
+  Rendered layouts/_head.html.erb (Duration: 100753.1ms | Allocations: 86950)
+Completed 500 Internal Server Error in 101289ms (ActiveRecord: 127.2ms | Allocations: 100545)
+
+
+  
+ActionView::Template::Error (Webpacker can't find application in /home/marvellous/Desktop/ror-facebook-clone/public/packs/manifest.json. Possible causes:
+1. You want to set webpacker.yml value of compile to true for your environment
+   unless you are using the `webpack -w` or the webpack-dev-server.
+2. webpack has not yet re-run to reflect updates.
+3. You have misconfigured Webpacker's config/webpacker.yml file.
+4. Your webpack configuration is not creating a manifest.
+Your manifest contains:
+{
+}
+):
+    5:     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    6: 
+    7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+  
+app/views/layouts/_head.html.erb:8
+app/views/layouts/application.html.erb:3
+Started GET "/login" for ::1 at 2020-01-14 16:27:18 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 22.7ms | Allocations: 548)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 85.2ms | Allocations: 2013)
+  Rendered layouts/_head.html.erb (Duration: 2624.7ms | Allocations: 68673)
+Completed 500 Internal Server Error in 2829ms (ActiveRecord: 0.0ms | Allocations: 73093)
+
+
+  
+ActionView::Template::Error (Asset `application.js` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link application.js
+and restart your server):
+    5:     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    6: 
+    7:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+  
+app/views/layouts/_head.html.erb:8
+app/views/layouts/application.html.erb:3
+Started GET "/login" for ::1 at 2020-01-14 16:28:51 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 8.9ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 67.8ms | Allocations: 1106)
+  Rendered layouts/_head.html.erb (Duration: 1205.9ms | Allocations: 27842)
+  Rendered layouts/_header.html.erb (Duration: 27.1ms | Allocations: 627)
+Completed 200 OK in 1372ms (Views: 1347.5ms | ActiveRecord: 0.0ms | Allocations: 30643)
+
+
