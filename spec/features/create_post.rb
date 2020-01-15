@@ -15,6 +15,11 @@ RSpec.describe 'User create posts', type: :feature do
     expect(page).to have_content('Good Day')
   end
 
+  scenario 'has incorrect log_in details' do
+    login_with 'incorrect email', 'invalid password'
+    expect(page).to have_content('Login')
+  end
+
   def login_with(email, password)
     visit new_user_session_path
     fill_in 'user_email', with: email
