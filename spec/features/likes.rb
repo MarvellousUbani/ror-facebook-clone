@@ -1,18 +1,16 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe 'User create posts', type: :feature do
+RSpec.describe 'User like', type: :feature do
   before :each do
     User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
+    Post.create(content: 'text', author_id: 1)
   end
 
-  scenario 'has post button' do
+  scenario 'has like' do
     login_with 'mike@gmail.com', '111111'
-    fill_in 'post_content', with: 'Good Day'
-    click_on 'Post'
+    click_on 'Like'
     visit posts_path
-    expect(page).to have_content('Good Day')
+    expect(page).to have_content('1 like')
   end
 
   def login_with(email, password)

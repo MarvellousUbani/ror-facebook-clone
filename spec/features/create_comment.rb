@@ -1,16 +1,15 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe 'User create posts', type: :feature do
+RSpec.describe 'User comments', type: :feature do
   before :each do
     User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
+    Post.create(content: 'text', author_id: 1)
   end
 
-  scenario 'has post button' do
+  scenario 'has comment content' do
     login_with 'mike@gmail.com', '111111'
-    fill_in 'post_content', with: 'Good Day'
-    click_on 'Post'
+    fill_in 'comment_content', with: 'Good Day'
+    click_on 'Comment'
     visit posts_path
     expect(page).to have_content('Good Day')
   end
