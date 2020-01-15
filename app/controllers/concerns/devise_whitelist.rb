@@ -1,12 +1,14 @@
-module DeviseWhitelist
-	extend ActiveSupport::Concern
+# frozen_string_literal: true
 
-	included do 
-	  before_action :config_params, if: :devise_controller?
+module DeviseWhitelist
+  extend ActiveSupport::Concern
+
+  included do
+    before_action :config_params, if: :devise_controller?
   end
 
-	def config_params
-		devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-		devise_parameter_sanitizer.permit(:account_update, keys: [:name, :location,:description,:avatar])
-	end
+  def config_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name username])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name username location description avatar])
+  end
 end
