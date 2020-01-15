@@ -1,0 +1,7 @@
+<%= form_for(@post) do |f| %>
+  <div class="form-group">
+    <%= f.label :content, class:'d-none'%>
+    <%= f.text_area :content, class: 'form-control', :rows => 3, :placeholder => "What's on your mind today?"  %>
+    <p class="d-flex justify-content-end my-2"><%= f.submit "Post", class: "btn bg-red font-white" %></p>
+    </div>
+  <% end %>

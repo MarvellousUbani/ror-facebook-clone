@@ -1,0 +1,25 @@
+<div class="col p-0 profile-col">
+    <%= image_tag user_avatar(current_user) , class: "img-fluid big-profile-img", alt: "big profile image" %>
+    <div class="profile-detail-box bg-red p-4">
+    	<p class="user-name"><%= current_user.name %></p>
+    	<p class="user-location"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %></p>
+
+    	<p class="count-bloc d-flex justify-content-between"><span class="posts-count"><%= current_user.posts.count %> posts</span> <span class="friends-count">0 friends</span></p>
+
+    	<p class="user-description text-left pt-3"><%= current_user.description %></p>
+
+        <p class="d-flex justify-content-end"><%= link_to "Edit Profile", edit_user_registration_path, :class => 'nav-link font-white' %></p>
+    	
+    </div>
+
+    <div class="info-detail-box py-4 my-4">
+    	<h6 class="info-title px-4">Info</h6>
+
+    	<p class="px-4"><i class="fa fa-briefcase" aria-hidden="true"></i> Works at <span class="user-company">Shell</span></p>
+
+    	<p class="px-4"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Studied at <span class="user-school">UNN</span></p>
+
+    	<p class="px-4"><i class="fa fa-users" aria-hidden="true"></i> Followed by <span class="user-friends-count">0</span> people</p>
+    </div>
+
+    </div>
