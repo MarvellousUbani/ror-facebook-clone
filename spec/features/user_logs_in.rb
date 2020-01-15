@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User logs in', type: :feature do
-
   before :each do
     User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
   end
