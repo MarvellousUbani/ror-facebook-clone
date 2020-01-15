@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User logs in', type: :feature do
+RSpec.describe 'User create posts', type: :feature do
   before :each do
     User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
   end
@@ -13,6 +13,11 @@ RSpec.describe 'User logs in', type: :feature do
     click_on 'Post'
     visit posts_path
     expect(page).to have_content('Good Day')
+  end
+
+  scenario 'has incorrect log_in details' do
+    login_with 'incorrect email','invalid password'
+    expect(page).to have_content('Login')
   end
 
   def login_with(email, password)
