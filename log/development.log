@@ -10007,3 +10007,271 @@ FOREIGN KEY ("blob_id")
   [1m[36mActiveRecord::InternalMetadata Load (39.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (2.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(6230379401235924795)[0m
   [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-01-15 19:07:22 +0300
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 119ms (ActiveRecord: 0.0ms | Allocations: 1654)
+
+
+Started GET "/login" for ::1 at 2020-01-15 19:07:23 +0300
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 16.7ms | Allocations: 8453)
+
+
+  
+NoMethodError (undefined method `location' for #<User id: nil, email: "", created_at: nil, updated_at: nil>):
+  
+app/models/user.rb:15:in `set_defaults'
+Started GET "/login" for ::1 at 2020-01-15 19:11:42 +0300
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 96ms (ActiveRecord: 19.2ms | Allocations: 7682)
+
+
+  
+NoMethodError (undefined method `location' for #<User id: nil, email: "", created_at: nil, updated_at: nil>):
+  
+app/models/user.rb:15:in `set_defaults'
+  [1m[35m (22.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (53.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (8592.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "odin_facebook_development"[0m
+  [1m[35m (1952.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "odin_facebook_test"[0m
+  [1m[35m (2074.7ms)[0m  [1m[35mCREATE DATABASE "odin_facebook_development" ENCODING = 'unicode'[0m
+  [1m[35m (958.9ms)[0m  [1m[35mCREATE DATABASE "odin_facebook_test" ENCODING = 'unicode'[0m
+  [1m[35m (198.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (144.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6230379401235924795)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200108175924)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (216.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying, "location" character varying, "description" text, "username" character varying, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (52.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (74.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (8.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200108175924"]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20200109233500)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (89.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "content" text, "author_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200109233500"]]
+  [1m[35m (20.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20200110081257)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (108.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (54.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (212.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (56.7ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (52.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200110081257"]]
+  [1m[35m (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (23.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-01-15 16:21:02.212600"], ["updated_at", "2020-01-15 16:21:02.212600"]]
+  [1m[35m (18.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6230379401235924795)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/login" for ::1 at 2020-01-15 19:22:33 +0300
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 0.0ms | Allocations: 7388)
+
+
+  
+NoMethodError (undefined method `location' for #<User id: nil, email: "", created_at: nil, updated_at: nil>):
+  
+app/models/user.rb:15:in `set_defaults'
+Started GET "/" for ::1 at 2020-01-15 19:25:04 +0300
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 86ms (ActiveRecord: 0.0ms | Allocations: 1251)
+
+
+Started GET "/login" for ::1 at 2020-01-15 19:25:05 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 14.9ms | Allocations: 646)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 420.1ms | Allocations: 4089)
+  Rendered layouts/_head.html.erb (Duration: 11763.2ms | Allocations: 170606)
+  Rendered layouts/_header.html.erb (Duration: 18.3ms | Allocations: 625)
+Completed 200 OK in 12458ms (Views: 12342.6ms | ActiveRecord: 17.5ms | Allocations: 186575)
+
+
+Started GET "/register" for ::1 at 2020-01-15 19:25:47 +0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 15.2ms | Allocations: 215)
+  Rendered devise/shared/_links.html.erb (Duration: 0.9ms | Allocations: 124)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 45.8ms | Allocations: 2499)
+  Rendered layouts/_head.html.erb (Duration: 50.5ms | Allocations: 8585)
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 192)
+Completed 200 OK in 104ms (Views: 101.5ms | ActiveRecord: 0.0ms | Allocations: 12842)
+
+
+Started POST "/" for ::1 at 2020-01-15 19:26:17 +0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"sFy45BlEE/zCNuHz89b/8WaLdWo/wNojYtprXuu6P1hYG9RrwMbzboeMLqLhNav1FIC8DUFBvtx5x5zvq/KEvQ==", "user"=>{"name"=>"asha", "username"=>"asha76", "email"=>"asha@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (59.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asha@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (41.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "location", "description", "username", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "asha@gmail.com"], ["encrypted_password", "$2a$11$RQqE7ogo4zjH3INRpkyL5e8vRTspIO.nn7lyzybXjQe.EA/GAiYN."], ["name", "asha"], ["location", "Worldwide"], ["description", "Some Text About Me Here"], ["username", "asha76"], ["created_at", "2020-01-15 16:26:17.876068"], ["updated_at", "2020-01-15 16:26:17.876068"]]
+  [1m[35m (35.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 729ms (ActiveRecord: 136.4ms | Allocations: 10661)
+
+
+Started GET "/" for ::1 at 2020-01-15 19:26:18 +0300
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (29.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:4:in `user_avatar'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/_profile.html.erb:7
+  Rendered posts/_profile.html.erb (Duration: 120.8ms | Allocations: 11736)
+  Rendered posts/_postform.html.erb (Duration: 34.6ms | Allocations: 903)
+  [1m[36mPost Load (22.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:11
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_friends.html.erb (Duration: 27.7ms | Allocations: 104)
+  Rendered posts/index.html.erb within layouts/application (Duration: 229.6ms | Allocations: 14264)
+  Rendered layouts/_head.html.erb (Duration: 19.3ms | Allocations: 8585)
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 223)
+Completed 200 OK in 318ms (Views: 197.4ms | ActiveRecord: 62.6ms | Allocations: 30162)
+
+
+Started DELETE "/logout" for ::1 at 2020-01-15 19:34:15 +0300
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kjLSo9pxM79lvGyxa91xhdSW17Co/kPnyl/dlfMEg154BLNeWDLxSzbzBi7NYBQ7dxMsN46JbqlCyYJPWBhX5A=="}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 160ms (ActiveRecord: 3.0ms | Allocations: 5029)
+
+
+Started GET "/" for ::1 at 2020-01-15 19:34:15 +0300
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 284)
+
+
+Started GET "/login" for ::1 at 2020-01-15 19:34:15 +0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.8ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 14.4ms | Allocations: 1104)
+  Rendered layouts/_head.html.erb (Duration: 50.6ms | Allocations: 8584)
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 192)
+Completed 200 OK in 75ms (Views: 73.0ms | ActiveRecord: 0.0ms | Allocations: 10702)
+
+
+Started POST "/login" for ::1 at 2020-01-15 19:38:04 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"qANQN2dmxfnutuMsZ8hp37tRUohn+fjdCkbQyNK24JsSYnJtIaPj20Y4khND6TWf7CvPUMZ+xdMpcklXoTiPVQ==", "user"=>{"email"=>"asha@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "asha@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", "2020-01-15 16:38:05.263115"], ["updated_at", "2020-01-15 16:38:05.263720"], ["id", 1]]
+  [1m[35m (20.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 486ms (ActiveRecord: 22.0ms | Allocations: 9597)
+
+
+Started GET "/" for ::1 at 2020-01-15 19:38:05 +0300
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:4:in `user_avatar'
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/_profile.html.erb:7
+  Rendered posts/_profile.html.erb (Duration: 12.7ms | Allocations: 1971)
+  Rendered posts/_postform.html.erb (Duration: 1.8ms | Allocations: 423)
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:11
+  Rendered collection of templates [0 times] (Duration: 0.1ms | Allocations: 3)
+  Rendered posts/_friends.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered posts/index.html.erb within layouts/application (Duration: 21.3ms | Allocations: 3301)
+  Rendered layouts/_head.html.erb (Duration: 24.1ms | Allocations: 8582)
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 208)
+Completed 200 OK in 57ms (Views: 47.0ms | ActiveRecord: 4.4ms | Allocations: 14238)
+
+
+Started POST "/posts" for ::1 at 2020-01-15 19:38:20 +0300
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"QT14+uFsGQdoikiJ7Uini9KBBStf4kiQp+DWDymUu6koCtFaD+EuJB/ZO7nKcHcb+OcfnAbAl8MSB3v1hc9Q4g==", "post"=>{"content"=>"Good Day"}, "commit"=>"Post"}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("content", "author_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "Good Day"], ["author_id", 1], ["created_at", "2020-01-15 16:38:20.727990"], ["updated_at", "2020-01-15 16:38:20.727990"]]
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+  [1m[35m (13.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:14:in `create'
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 79ms (ActiveRecord: 17.3ms | Allocations: 5211)
+
+
+Started GET "/posts" for ::1 at 2020-01-15 19:38:20 +0300
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (4.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:4:in `user_avatar'
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/_profile.html.erb:7
+  Rendered posts/_profile.html.erb (Duration: 23.6ms | Allocations: 1966)
+  Rendered posts/_postform.html.erb (Duration: 1.6ms | Allocations: 417)
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:11
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_post.html.erb:5
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:4:in `user_avatar'
+  Rendered collection of posts/_post.html.erb [1 times] (Duration: 33.8ms | Allocations: 2232)
+  Rendered posts/_friends.html.erb (Duration: 0.1ms | Allocations: 5)
+  Rendered posts/index.html.erb within layouts/application (Duration: 68.9ms | Allocations: 5729)
+  Rendered layouts/_head.html.erb (Duration: 34.2ms | Allocations: 8586)
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 211)
+Completed 200 OK in 150ms (Views: 96.1ms | ActiveRecord: 14.3ms | Allocations: 16681)
+
+
+Started DELETE "/posts/1" for ::1 at 2020-01-15 19:38:34 +0300
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"I46AKyCmWGOtKiM5laXE7wY7bUOlPzmIrox/xH45uzVKuSmLzitvQNp5UAmynRR/LF139Pwd5tsba9I+0mJQfg==", "id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:41:in `post_owner'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:42:in `post_owner'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:42:in `post_owner'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 ORDER BY "posts"."created_at" DESC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:29:in `destroy'
+  [1m[36mPost Destroy (0.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/posts_controller.rb:29:in `destroy'
+  [1m[35m (95.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:29:in `destroy'
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 124ms (ActiveRecord: 97.8ms | Allocations: 5193)
+
+
+Started GET "/posts" for ::1 at 2020-01-15 19:38:34 +0300
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:4:in `user_avatar'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 1]]
+  ↳ app/views/posts/_profile.html.erb:7
+  Rendered posts/_profile.html.erb (Duration: 6.7ms | Allocations: 1964)
+  Rendered posts/_postform.html.erb (Duration: 1.4ms | Allocations: 419)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/posts/index.html.erb:11
+  Rendered collection of templates [0 times] (Duration: 0.0ms | Allocations: 3)
+  Rendered posts/_friends.html.erb (Duration: 0.2ms | Allocations: 5)
+  Rendered posts/index.html.erb within layouts/application (Duration: 23.3ms | Allocations: 3274)
+  Rendered layouts/_head.html.erb (Duration: 20.6ms | Allocations: 8582)
+  Rendered layouts/_header.html.erb (Duration: 0.6ms | Allocations: 208)
+Completed 200 OK in 52ms (Views: 45.4ms | ActiveRecord: 2.5ms | Allocations: 14216)
+
+
