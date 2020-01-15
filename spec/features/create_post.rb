@@ -16,7 +16,7 @@ RSpec.describe 'User create posts', type: :feature do
   end
 
   scenario 'has incorrect log_in details' do
-    login_with 'incorrect email','invalid password'
+    login_with 'incorrect email', 'invalid password'
     expect(page).to have_content('Login')
   end
 
