@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Visitor signs up', type: :feature do
-   scenario 'with valid email and name' do
+  scenario 'with valid email and name' do
     sign_up_with 'mikey@gmail.com', 'mikey', 'password', 'password'
 
     expect(page).to have_content('Logout')
