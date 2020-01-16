@@ -15,7 +15,7 @@
 <div class="d-flex justify-content-between post-like-line">
 	<ul class="d-flex pl-0">
 		<li>
-			<% unless current_user.likes.exists?(post_id: post.id) %>
+			<% unless liked?(post.id) %>
 			  <%= button_to "👍",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font"} %>
 			<% else %>
 			  <%= button_to "👎",{:action => 'destroy',
