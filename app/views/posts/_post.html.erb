@@ -16,11 +16,11 @@
 	<ul class="d-flex pl-0">
 		<li>
 			<% unless liked?(post.id) %>
-			  <%= button_to "👍",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font"} %>
+			  <%= button_to "👍",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font likebtn"} %>
 			<% else %>
 			  <%= button_to "👎",{:action => 'destroy',
-			  	:controller => 'likes',:id => post.likes.find_by(user_id:current_user.id).id }, 
-			  	{:method => :delete, :class => "trans-btn font-red mid-font"} %>
+			  	:controller => 'likes',:id =>  current_user_liked(post.id) }, 
+			  	{:method => :delete, :class => "trans-btn font-red mid-font  likebtn"} %>
 			  <% end %>
 	</li>
 			<li class="d-flex align-items-center"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></li>

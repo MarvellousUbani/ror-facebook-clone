@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe 'User comments', type: :feature do
   before :each do
-    User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
-    Post.create(content: 'text', author_id: 1)
+    @user = User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
+    @post = Post.create(content: 'text', author_id: @user.id)
   end
 
   scenario 'has comment content' do
