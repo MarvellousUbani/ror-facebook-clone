@@ -1,0 +1,8 @@
+<%= form_for([Comment.new], html: {class: "w-100"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :content, class:'d-none'%>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_area :content, class: 'form-control', :rows => 1, :placeholder => "Reply"  %>
+    <p class="d-flex justify-content-end my-2"><%= f.submit "Comment", class: "btn bg-red font-white" %></p>
+    </div>
+  <% end %>

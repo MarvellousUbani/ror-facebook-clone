@@ -1,3 +1,7 @@
+*{
+	outline: 0px !important;
+}
+
 body{
 	 background: rgba(238, 69, 101,0.05) !important;
 }
@@ -9,6 +13,7 @@ a:hover{
 textarea:focus, input:focus{
     box-shadow:none !important;
 }
+
 
 /*main content*/
 
@@ -123,6 +128,12 @@ textarea:focus, input:focus{
 /*Third Col*/
 
 
+/*Comment Box*/
+
+.comment-box{
+    padding: 1rem .8rem;
+    border:1px solid #f5d0d7
+}
 
 
 /* Navbar Area*/
@@ -145,6 +156,16 @@ textarea:focus, input:focus{
 
 .font-black:hover{
 	color:#232323;
+}
+
+.mid-font{
+	font-size:1.6rem;
+}
+
+.mid-font:hover{
+	  transform: scale(1.4);
+    transition: all .5s;
+    color: red;
 }
 
 .max100{
