@@ -4,11 +4,10 @@ class FriendshipsController < ApplicationController
   def create
     @user = User.find(params[:friend_id])
     @friendship = Friendship.new(friendships_params)
-    if @friendship.save
-      @friendship.users << @user
-      @friendship.users << current_user
-      redirect_back(fallback_location: root_path)
-    end
+    @friendship.save
+    @friendship.users << @user
+    @friendship.users << current_user
+    redirect_back(fallback_location: root_path)
   end
 
   def update
