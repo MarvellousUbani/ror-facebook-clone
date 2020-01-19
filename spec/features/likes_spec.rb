@@ -12,7 +12,7 @@ RSpec.describe 'User like', type: :feature do
     login_with 'mike@gmail.com', '111111'
     find('.likebtn').click
     visit posts_path
-    expect(page).to have_content('1 Like')
+    expect(page).to have_content('1 like')
   end
 
   scenario 'has no like on post' do
@@ -20,7 +20,7 @@ RSpec.describe 'User like', type: :feature do
     find('.likebtn').click
     visit posts_path
     find('.likebtn').click
-    expect(page).to have_content('0 Likes')
+    expect(page).to have_content('0 likes')
   end
 
   def login_with(email, password)

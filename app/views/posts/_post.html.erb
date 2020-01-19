@@ -23,11 +23,11 @@
 			  	{:method => :delete, :class => "trans-btn font-red mid-font  likebtn"} %>
 			  <% end %>
 	</li>
-			<li class="d-flex align-items-center"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></li>
+			<li class="d-flex align-items-center"><%= pluralize(post.likes.count, "like") %></li>
 	</ul>
 
 	<ul class="d-flex">
-		<li class="comments-count d-flex align-items-center"><%= post.comments.count %> Comments</li>
+		<li class="comments-count d-flex align-items-center"><%= pluralize(post.comments.count, "comment") %></li>
 	</ul>
 </div>
 
