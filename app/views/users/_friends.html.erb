@@ -1,6 +1,6 @@
 <div class="col friends-col py-4">
 	<p class="lead font-red">Friends</p>
-	<% @user.friendships.where(confirmed:"approved").each do |friendship| %>
+	<% @confirmed_friends.each do |friendship| %>
 	  <% friendship.users.each do  |user| %>
 	   <% unless user == @user %>
 	   <p class="d-flex user-name-and-image">
