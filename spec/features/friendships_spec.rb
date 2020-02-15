@@ -5,22 +5,25 @@ require 'rails_helper'
 RSpec.describe 'User like', type: :feature do
   before :each do
     @user = User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
-    @post = Post.create(content: 'text', author_id: @user.id)
+    @asha = User.create(name: 'asha', email: 'asha@gmail.com', password: '999999')
   end
 
-  scenario 'has like on post' do
+  scenario 'has Request friendship' do
     login_with 'mike@gmail.com', '111111'
-    find('.likebtn').click
-    visit posts_path
-    expect(page).to have_content('1 like')
+    visit users_path
+    find('.addingfriend').click
+    expect(page).to have_content('Pending Request')
   end
 
-  scenario 'has no like on post' do
+  scenario 'has Accept friendship' do
     login_with 'mike@gmail.com', '111111'
-    find('.likebtn').click
-    visit posts_path
-    find('.likebtn').click
-    expect(page).to have_content('0 likes')
+    visit users_path
+    find('.addingfriend').click
+    find('.Logout').click
+    login_with 'asha@gmail.com', '999999'
+    visit users_path
+    find('.acceptingfriend').click
+    expect(page).to have_content('See Profile')
   end
 
   def login_with(email, password)

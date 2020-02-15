@@ -1,5 +1,47 @@
 <div class="container">
 	<h3>All Users</h3>
-	<%= render @users %>
+	<br><br><br>
+	<p>Confirmed Friends</p>
+	<% @confirmed_friends.each do|friendship| %>
+	  <% friendship.users.each do|user| %>
+	    <% unless user == current_user %>
+	     <p><%= user.name %></p>
+			 <p> <%= image_tag user_avatar(user) , class: "img-fluid med-profile-img" %> </p>
+			 <%= link_to "See Profile", user, :class => "bg-red font-white p-1 profile" %>
+	     <% end %>
+	  <% end %>
+	<% end %><br><br>
+
+	<p>Pending Requests</p>
+	<% @pending_friends.each do|friendship| %>
+	  <% friendship.users.each do|user| %>
+	    <% unless user == current_user %>
+	     <p><%= user.name %></p>
+			 <p> <%= image_tag user_avatar(user) , class: "img-fluid med-profile-img" %> </p>
+			 <%= link_to "Pending Request", user, :class => "bg-red font-white p-1 pendingbutton" %>
+	     <% end %>
+	  <% end %>
+	<% end %><br><br>
+
+	<p> Need to Accept Requests </p>
+	<% @accept_friends.each do|friendship| %>
+	  <% friendship.users.each do|user| %>
+	    <% unless user == current_user %>
+	    <p><%= user.name %></p>
+			 <p> <%= image_tag user_avatar(user) , class: "img-fluid med-profile-img" %> </p>
+			 <%= button_to "Accept Friend",{:controller => 'friendships', :action => 'update',:user_id => current_user.id, :friend_id => user.id, :id => friendship.id }, {:method => :patch, :class => "bg-red font-white p-1 acceptingfriend"} %>
+	     
+	     <% end %>
+	  <% end %>
+	<% end %><br><br>
+
+	<p>Not Friends</p>
+	<!-- All Users where user id is not in current user friendships user_id or friend_id -->
+  <% @not_friends.each do |user| %>
+      <p><%= user.name %></p>
+			 <p> <%= image_tag user_avatar(user) , class: "img-fluid med-profile-img" %> </p>
+       <%= button_to "Add Friend",{:controller => 'friendships', :action => 'create',:user_id => current_user.id, :friend_id => user.id}, {:method => :post, :class => "bg-red font-white p-1 addingfriend"} %>
+      <% end %>
+
 </div>
 
