@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @posts = Post.all
+    @accept_friends = Friendship.accept_requests(current_user.id)
   end
 
   def destroy
