@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 class Friendship < ApplicationRecord
   enum confirmed: { pending: 0, approved: 1 }
   has_and_belongs_to_many :users
@@ -19,8 +18,6 @@ class Friendship < ApplicationRecord
   end
 
   def non_self_friendship
-    if friend_id == user_id
-      errors.add(:friendships, 'You cannot befriend yourself')
-    end
+    errors.add(:friendships, 'You cannot befriend yourself') if friend_id == user_id
   end
 end
