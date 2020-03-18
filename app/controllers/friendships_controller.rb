@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
+  before_action :load_friendship
+  
   def create
     @user = User.find(params[:friend_id])
     @friendship = Friendship.new(friendships_params)
@@ -14,6 +16,11 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.approved!
     redirect_back(fallback_location: root_path)
+  end
+
+  def destroy
+    @friendship = Friendship.find params[:id]
+    @friendship.destroy
   end
 
   private

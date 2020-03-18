@@ -1,7 +1,7 @@
 <div class="col friends-col py-4">
 	<p class="lead font-red">Friends</p>
-	<% @confirmed_friends.each do |friendship| %>
-	  <% friendship.users.each do  |user| %>
+	  <% @confirmed_friends.each do |friendship| %>
+	  <% @friendship.users.each do  |user| %>
 	   <% unless user == @user %>
 	   <p class="d-flex user-name-and-image">
 				<span class="post-author-img">

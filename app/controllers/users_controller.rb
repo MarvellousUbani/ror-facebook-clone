@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @confirmed_friends = Friendship.confirmed_requests(current_user.id)
     @accept_friends = Friendship.accept_requests(current_user.id)
     @not_friends = User.where.not(
-         id: (@confirmed_friends.map(&:friend_id) + @pending_friends.map(&:friend_id))
+         id: (@confirmed_friends.map(&:friend_id) + @pending_friends.map(&:friend_id)))
   end
 
   def show
