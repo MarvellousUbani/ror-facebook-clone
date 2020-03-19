@@ -15,5 +15,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post = Post.new
     @posts = @user.posts
+    @confirmed_friends = Friendship.confirmed_requests current_user.id
   end
 end

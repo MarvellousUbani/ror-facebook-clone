@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
-  before_action :load_friendship
+  
   
   def create
     @user = User.find(params[:friend_id])
