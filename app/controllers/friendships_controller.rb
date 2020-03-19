@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class FriendshipsController < ApplicationController
-  
   def create
     @user = User.find(params[:friend_id])
     @friendship = Friendship.new(friendships_params)
