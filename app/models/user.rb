@@ -21,4 +21,8 @@ class User < ApplicationRecord
     self.location ||= 'Worldwide'
     self.description ||= 'Some Text About Me Here'
   end
+
+  def friends_and_own_posts
+    Post.where(user: (self.friends + self))
+  end
 end
