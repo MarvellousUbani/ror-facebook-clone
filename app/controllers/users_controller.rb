@@ -3,10 +3,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[show index]
 
+  before_action :user_friends, only: %i[show index]
+
   def index
     @pending_friends = Friendship.pending_requests(current_user.id)
-    @confirmed_friends = Friendship.confirmed_requests(current_user.id)
-    @accept_friends = Friendship.accept_requests(current_user.id)
     @not_friends = User.where.not(
       id: (@confirmed_friends.map(&:friend_id) + @pending_friends.map(&:friend_id))
     )
@@ -16,6 +16,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @post = Post.new
     @posts = @user.posts
-    @confirmed_friends = Friendship.confirmed_requests current_user.id
+  end
+
+  private
+
+  def user_friends
+    @confirmed_friends = Friendship.confirmed_requests(current_user.id)
+    @accept_friends = Friendship.accept_requests(current_user.id)
+    
   end
 end
