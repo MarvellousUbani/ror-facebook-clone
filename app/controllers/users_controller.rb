@@ -23,6 +23,5 @@ class UsersController < ApplicationController
   def user_friends
     @confirmed_friends = Friendship.confirmed_requests(current_user.id)
     @accept_friends = Friendship.accept_requests(current_user.id)
-    
   end
 end
