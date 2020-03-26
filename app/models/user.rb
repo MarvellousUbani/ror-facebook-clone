@@ -23,8 +23,8 @@ class User < ApplicationRecord
   end
 
   def friends_and_own_posts
-    friends_ids = Friendship.where(user_id: self.id).map(&:friend_id)
-    friends_ids.push(self.id)
+    friends_ids = Friendship.where(user_id: id).map(&:friend_id)
+    friends_ids.push(id)
     Post.where(author_id: [friends_ids])
   end
 end
