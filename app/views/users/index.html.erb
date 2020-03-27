@@ -32,7 +32,7 @@
 			 <p> <%= image_tag user_avatar(user) , class: "img-fluid med-profile-img" %> </p>
 			 <%= button_to "Accept Friend",{:controller => 'friendships', :action => 'update',:user_id => current_user.id, :friend_id => user.id, :id => friendship.id }, {:method => :patch, :class => "bg-red font-white p-1 acceptingfriend"} %>
 			 <%= button_to "Reject Friend",{:controller => 'friendships', :action => 'destroy', :id => friendship.id }, {:method => :patch, :class => "bg-red font-white p-1 acceptingfriend"} %>
-			 <%= button_to "Remove Friend", {:controller => 'friendships', :action =>  'destroy', :id => friendship.id }, {method => :delete } %>
+			 
 	     
 	     <% end %>
 	  <% end %>
