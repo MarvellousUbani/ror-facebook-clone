@@ -14,8 +14,6 @@ class FriendshipsController < ApplicationController
     @friendship = Friendship.find(params[:id])
     @friendship.approved!
     redirect_back(fallback_location: root_path)
-    Friendship.create(user_id: @friendship.friend_id, friend_id: @friendship.user_id,  confirmed: "approved")
-
   end
 
   def destroy
@@ -27,5 +25,9 @@ class FriendshipsController < ApplicationController
 
   def friendships_params
     params.permit(:user_id, :friend_id)
+  end
+
+  def approved!
+    @friendship.update!(confirmed: :approved)
   end
 end
