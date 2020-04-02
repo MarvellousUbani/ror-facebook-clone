@@ -7,7 +7,8 @@ class UsersController < ApplicationController
     @pending_friends = Friendship.pending_requests(current_user.id)
     @confirmed_friends = Friendship.confirmed_requests(current_user.id)
     @not_friends = User.where.not(
-      id: @confirmed_friends.map(&:user_id))
+      id: @confirmed_friends.map(&:user_id)
+    )
   end
 
   def show
@@ -15,5 +16,4 @@ class UsersController < ApplicationController
     @post = Post.new
     @posts = @user.posts
   end
-
 end
