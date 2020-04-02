@@ -24,7 +24,6 @@ class PostsController < ApplicationController
     # @posts = Post.all
     @accept_friends = Friendship.accept_requests(current_user.id)
     @posts = current_user.friends_and_own_posts
-    
   end
 
   def destroy
