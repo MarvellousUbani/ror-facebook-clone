@@ -1,15 +1,16 @@
 <div class="col friends-col py-4">
 	<p class="lead font-red">Friends</p>
 	  <% confirmed_friends.each do |friendship| %>
-	  <% friendship.users.each do  |user| %>
-	   <% unless user == @user %>
-	   <p class="d-flex user-name-and-image">
-				<span class="post-author-img">
-				<%= image_tag user_avatar(user) , class: "img-fluid small-profile-img", alt: "small friend profile image" %>
-			</span> 
-			<span class="post-author-name ml-2"><%= link_to user.name, user, :class => "font-black" %></span></p>
-	   <% end %>
-	  
-	<% end %>
-	
+	  		<% friendship.users.each do  |user| %>
+	   			<% unless user == @user %>
+	   				<p class="d-flex user-name-and-image">
+						<span class="post-author-img">
+							<%= image_tag user_avatar(user) , class: "img-fluid small-profile-img", alt: "small friend profile image" %>
+						</span> 
+						<span class="post-author-name ml-2"><%= link_to user.name, user, :class => "font-black" %>
+						</span>
+					</p>
+	   			<% end %>
+	  		<% end %>
+	  	<% end %>
 </div>
