@@ -16,9 +16,18 @@ class FriendshipsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def destroy
+    @friendship = Friendship.find params[:id]
+    @friendship.destroy
+  end
+
   private
 
   def friendships_params
     params.permit(:user_id, :friend_id)
+  end
+
+  def approved!
+    @friendship.update!(confirmed: :approved)
   end
 end

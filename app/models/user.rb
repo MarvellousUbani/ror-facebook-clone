@@ -21,4 +21,10 @@ class User < ApplicationRecord
     self.location ||= 'Worldwide'
     self.description ||= 'Some Text About Me Here'
   end
+
+  def friends_and_own_posts
+    friends_ids = Friendship.where(user_id: id).map(&:friend_id)
+    friends_ids.push(id)
+    Post.where(author_id: [friends_ids])
+  end
 end
