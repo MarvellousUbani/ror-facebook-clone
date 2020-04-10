@@ -32,6 +32,10 @@ Style/HashTransformValues:
 
 Lint/RaiseException:
   Enabled: false
+Lint/Void:
+  Enabled: false
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
 Lint/StructNewOverride:
   Enabled: false
 
