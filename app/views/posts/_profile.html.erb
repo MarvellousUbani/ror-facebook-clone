@@ -4,7 +4,7 @@
         <p class="user-name"><%= current_user.name %></p>
         <p class="user-location"><i class="fa fa-map-marker" aria-hidden="true"></i> <%= current_user.location %></p>
 
-        <p class="count-bloc d-flex justify-content-between"><span class="posts-count"><%= current_user.posts.count %> posts</span> <span class="friends-count"><%= pluralize(current_user.friendships.count, "friend") %></span></p>
+        <p class="count-bloc d-flex justify-content-between"><span class="posts-count"><%= pluralize(current_user.posts.count, "post" )%></span> <span class="friends-count"><%= pluralize(current_user.friendships.count, "friend")  %></span></p>
 
         <p class="user-description text-left pt-3"><%= current_user.description %></p>
 
@@ -19,7 +19,7 @@
 
         <p class="px-4"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Studied at <span class="user-school">UNN</span></p>
 
-        <p class="px-4"><i class="fa fa-users" aria-hidden="true"></i> Followed by <span class="user-friends-count"><%= pluralize(current_user.friendships.count, "person") %></span> </p>
+        <p class="px-4"><i class="fa fa-users" aria-hidden="true"></i> Followed by <span class="user-friends-count">0</span> people</p>
     </div>
 
     </div>

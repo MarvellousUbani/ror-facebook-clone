@@ -5,10 +5,10 @@
 
 <div class="col posts-col">
   <div class="post-box-form">
-  	 <% if @user.id == current_user.id %>
-  	    <h4>Welcome <%= @user.name %></h4>
-  	    <%= render "posts/postform" %>
-  	 <% else %>
+     <% if @user.id == current_user.id %>
+        <h4>Welcome <%= @user.name %></h4>
+        <%= render "posts/postform" %>
+     <% else %>
       <h4><%= @user.name %>'s Profile</h4>
       <% end %>
   </div>

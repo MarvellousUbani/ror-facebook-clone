@@ -21,7 +21,8 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.where(author: current_user.friends).or(Post.where(author: current_user))
+    @friends = current_user.friends
   end
 
   def destroy
