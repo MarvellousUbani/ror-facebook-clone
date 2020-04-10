@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
   def update
     @friendship.update(confirmed: true)
     @confirmed_friendship = Friendship.new(user_id: @friendship.friend_id,
-                                             friend_id: @friendship.user_id, confirmed: 'true')
+                                           friend_id: @friendship.user_id, confirmed: 'true')
     @confirmed_friendship.save
     redirect_back(fallback_location: root_path)
   end
@@ -30,5 +30,4 @@ class FriendshipsController < ApplicationController
   def friendships_params
     params.permit(:user_id, :friend_id)
   end
-
 end
