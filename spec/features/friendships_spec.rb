@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User like', type: :feature do
+RSpec.describe 'User', type: :feature do
   before :each do
     @user = User.create(name: 'mike', email: 'mike@gmail.com', password: '111111')
     @asha = User.create(name: 'asha', email: 'asha@gmail.com', password: '999999')
@@ -19,7 +19,7 @@ RSpec.describe 'User like', type: :feature do
     login_with 'mike@gmail.com', '111111'
     visit users_path
     find('.addingfriend').click
-    find('.Logout').click
+    find('.logout').click
     login_with 'asha@gmail.com', '999999'
     visit users_path
     find('.acceptingfriend').click
