@@ -9,7 +9,7 @@ Building a large portion of the core Facebook user functionality in this particu
 [Micheals](https://github.com/MarvellousUbani)
 
 #### Live Link:
-[Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
+[Web Url](https://glacial-peak-70037.herokuapp.com/)
 
 
 ##### ERD Facebook-Clone Diagram:
