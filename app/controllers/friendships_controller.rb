@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class FriendshipsController < ApplicationController
   before_action :find_friendship, only: %i[update destroy]
 
-  def create  
+  def create
     @friendship = Friendship.new(friendships_params)
     @friendship.save
     redirect_back(fallback_location: root_path)
