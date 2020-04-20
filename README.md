@@ -1,5 +1,4 @@
-# Title:
-Facebook-Clone
+# Mini-Facebook-Clone
 > Social Media App constituting features such as posting, commenting, liking posts, and mutual friendships
 
 ![fbsocialmedia](https://user-images.githubusercontent.com/17970203/79805163-710b8900-835d-11ea-876e-a75951f4bb17.png)
