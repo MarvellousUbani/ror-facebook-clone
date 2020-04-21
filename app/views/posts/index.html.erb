@@ -1,0 +1,17 @@
+<main class="container-fluid main-content my-4">
+    	<div class="row main-content-row d-flex justify-content-between">
+    		<%= render "profile" %>
+    		
+            <div class="col posts-col">
+                <div class="post-box-form">
+                    <h4>Welcome <%= current_user.name %></h4>
+                    <p class="lead font-red">Here's what everyone posted! 🙂</p>
+                     <%= render "postform" %>
+                </div>
+                <%= render @posts %>
+            </div>
+
+            <%= render "friends" %>
+    		
+    	</div>
+    </main>

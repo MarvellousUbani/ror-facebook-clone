@@ -1,0 +1,10 @@
+<div class="col friends-col py-4">
+	<p class="lead font-red">Friends</p>
+	 <% @friends.each do|user| %>
+   <p class="d-flex user-name-and-image">
+		<span class="post-author-img">
+		<%= image_tag user_avatar(user) , class: "img-fluid small-profile-img" %>
+	</span> 
+	<span class="post-author-name ml-2"><%= user.name %></span></p>
+ <%end %>
+</div>

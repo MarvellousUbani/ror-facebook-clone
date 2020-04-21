@@ -1,0 +1,48 @@
+<div class="post-box">
+	<div class="d-flex justify-content-between">
+		<div class="d-flex user-name-and-image">
+		  <span class="post-author-img">
+		 	<%= image_tag user_avatar(post.author) , class: "img-fluid small-profile-img", alt: "small profile image" %>
+	    </span> 
+	    <span class="post-author-name ml-2"><%= link_to post.author.name, user_path(post.author), :class => "font-black" %></span> </div>
+	    <% if current_user == post.author %>
+	    <div class="post-delete-btn"><%= link_to "x", post, {:class => "font-red", method: :delete} %> </div>
+	    <% end %>
+	  
+ </div>
+<p class="post-time-ago my-2"><%= time_ago_in_words(post.created_at) %> ago.</p>
+<p class="post-content"><%= post.content %></p>
+<div class="d-flex justify-content-between post-like-line">
+	<ul class="d-flex pl-0">
+		<li>
+			<% unless liked?(post.id) %>
+			  <%= button_to "👍",{:controller => 'likes', :action => 'create',:user_id => current_user.id, :post_id => post.id}, {:method => :post, :class => "trans-btn font-red mid-font likebtn"} %>
+			<% else %>
+			  <%= button_to "👎",{:action => 'destroy',
+			  	:controller => 'likes',:id =>  current_user_liked(post.id) }, 
+			  	{:method => :delete, :class => "trans-btn font-red mid-font  likebtn"} %>
+			  <% end %>
+	</li>
+			<li class="d-flex align-items-center"><%= pluralize(post.likes.count, "like") %></li>
+	</ul>
+
+	<ul class="d-flex">
+		<li class="comments-count d-flex align-items-center"><%= pluralize(post.comments.count, "comment") %></li>
+	</ul>
+</div>
+
+<div>
+	<h4 class="font-red">Comments</h4>
+	<p><%= render post.comments %></p>
+
+	<%= form_for([Comment.new], html: {class: "w-100"}) do |f| %>
+  <div class="form-group">
+    <%= f.label :content, class:'d-none'%>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_area :content, class: 'form-control', :rows => 1, :placeholder => "Reply"  %>
+    <p class="d-flex justify-content-end my-2"><%= f.submit "Comment", class: "btn bg-red font-white" %></p>
+    </div>
+  <% end %>
+</div>
+
+</div>
